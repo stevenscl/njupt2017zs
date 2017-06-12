@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <title>南邮通达招生微网</title>
+    <link rel="stylesheet" href="css/sm.min.css">
+    <link rel="stylesheet" href="css/video-js.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon" type="image/ico" href="img/favicon.ico">
+    <style type="text/css">
+    #zssp{
+        position: relative;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="page-group bggray">
+        <div class="page page-current">
+            <header class="bar bar-nav header">
+                <img src="img/logo.png">
+            </header>
+            <video id="zssp" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" poster="img/ban1.jpg" width="100%">
+                <source src="http://www.w3cschool.cc/try/demo_source/mov_bbb.mp4" type="video/mp4">
+            </video>
+            <!-- 工具栏 -->
+            <nav class="bar bar-tab">
+                <a class="tab-item external" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">回到首页</span>
+                </a>
+                <a class="tab-item external" href="dhzx.html">
+                    <span class="icon icon-phone"></span>
+                    <span class="tab-label">电话咨询</span>
+                </a>
+                <a class="tab-item external" href="http://www.tdxy.com.cn/index.php?m=content&c=index&a=lists&catid=216">
+                    <span class="icon icon-search"></span>
+                    <span class="tab-label">录取查询</span>
+                </a>
+                <a class="tab-item external active" href="xcsp.html">
+                    <span class="icon icon-computer"></span>
+                    <span class="tab-label">宣传视频</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/video.js"></script>
+    <script src="js/myscript.js"></script>
+    <script>
+    $(document).ready(function(){ 
+       setposition(); 
+    });
+    function setposition() {        
+        var screenheight = $(".page-current").height()/2;
+        var videoheight = $(".page-current").width() / 1.81 /2;
+        var padding_top = screenheight - videoheight;
+        $("#zssp").css({
+            "top": padding_top
+        });
+    }
+    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+        if (window.orientation === 180 || window.orientation === 0) { 
+            setposition();
+        } 
+        if (window.orientation === 90 || window.orientation === -90 ){ 
+            setposition();
+        }  
+    }, false); 
+    </script>
+</body>
+
+</html>

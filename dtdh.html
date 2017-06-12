@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="css/sm.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon" type="image/ico" href="img/favicon.ico">
+    <style type="text/css">
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        font-family: "微软雅黑";
+    }
+    
+    #allmap {
+        height: 94%;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    #result {
+        width: 100%;
+        font-size: 12px;
+    }
+    
+    dl,
+    dt,
+    dd,
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    dt {
+        font-size: 14px;
+        font-family: "微软雅黑";
+        font-weight: bold;
+        border-bottom: 1px dotted #000;
+        padding: 5px 0 5px 5px;
+        margin: 5px 0;
+    }
+    
+    dd {
+        padding: 5px 0 0 5px;
+    }
+    
+    li {
+        line-height: 28px;
+    }
+    
+    * {
+        box-sizing: content-box;
+    }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=awQLbyqiTsUqC32aGfO9Qx2t1qqN4Meo"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+    <title>南京邮电大学通达学院招生微网</title>
+</head>
+
+<body>
+    <div class="page-group">
+        <div class="page page-current">
+            <header class="bar bar-nav header">
+                <img src="img/logo.png">
+            </header>
+            <div class="content" style="top:50px;background-color: #fff;margin-bottom: 16.5%;">
+                <div id="allmap"></div>
+            </div>
+            <!-- 工具栏 -->
+            <nav class="bar bar-tab">
+                <a class="tab-item external" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">回到首页</span>
+                </a>
+                <a class="tab-item external" href="dhzx.html">
+                    <span class="icon icon-phone"></span>
+                    <span class="tab-label">电话咨询</span>
+                </a>
+                <a class="tab-item external" href="http://www.tdxy.com.cn/index.php?m=content&c=index&a=lists&catid=216">
+                    <span class="icon icon-search"></span>
+                    <span class="tab-label">录取查询</span>
+                </a>
+                <a class="tab-item external" href="xcsp.html">
+                    <span class="icon icon-computer"></span>
+                    <span class="tab-label">宣传视频</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map('allmap');
+    var poi = new BMap.Point(119.40359, 32.337483);
+    var center = new BMap.Point(119.401635, 32.33991);
+    map.centerAndZoom(center, 16);
+    map.enableScrollWheelZoom();
+    var mapType1 = new BMap.MapTypeControl({
+        mapTypes: [BMAP_NORMAL_MAP, BMAP_HYBRID_MAP]
+    });
+    map.addControl(mapType1);
+    var top_left_navigation = new BMap.NavigationControl(); //左上角，添加默认缩放平移控件
+    map.addControl(top_left_navigation);
+    var content = '<div style="margin:0;line-height:20px;padding:2px;">' +
+        '<img src="img/tdxy.jpg" alt="" style="float:right;zoom:1;overflow:hidden;width:100px;height:100px;margin-left:3px;"/>' +
+        '地址：扬州市润扬南路33号<br/>电话：0514-89716166<br/>简介：南京邮电大学通达学院是经教育部批准，由南京邮电大学于1999年创办的全日制本科独立学院。' +
+        '</div>';
+
+    //创建检索信息窗口对象
+    var searchInfoWindow = null;
+    searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
+        title: "南京邮电大学通达学院", //标题
+        width: 320, //宽度
+        height: 110, //高度
+        panel: "panel", //检索结果面板
+        enableAutoPan: true, //自动平移
+        searchTypes: [
+            // BMAPLIB_TAB_SEARCH, //周边检索
+            BMAPLIB_TAB_TO_HERE, //到这里去
+            BMAPLIB_TAB_FROM_HERE //从这里出发
+        ]
+    });
+    var marker = new BMap.Marker(poi); //创建marker对象
+    marker.enableDragging(); //marker可拖拽
+    marker.addEventListener("click", function(e) {
+        searchInfoWindow.open(marker);
+    })
+    map.addOverlay(marker); //在地图中添加marker
+    var deviceheight = $(window).height();
+    var footerheight = $(".bar-tab").height() + 50;
+    $('#allmap').css('height', (deviceheight - footerheight));
+
+    $(document).ready(function() {
+        searchInfoWindow.open(marker);
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <title>南京邮电大学通达招生微网</title>
+    <link rel="stylesheet" href="css/sm.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon" type="image/ico" href="img/favicon.ico">
+</head>
+
+<body>
+    <div class="page-group bggray">
+        <div class="page page-current">
+            <header class="bar bar-nav header">
+                <img src="img/logo.png">
+            </header>
+            <div class="content" style="top:50px;">
+                <div class="content-block" style="margin: 0 0 16.5% 0; padding: 0;">
+                    <div class="major_ss ask">
+                        <div class="searchk" style="position: relative">
+                            <a class="addss" style="right:-2.3rem;top:.1rem">搜索</a>
+                            <div class="contain">
+                                <input style="width: 100%" type="text" placeholder="请输入关键词" name="" id="searchquestion">
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="askcon" id="answer" style="margin-top: 0;">
+                    </ul>
+                </div>
+            </div>
+            <!-- 工具栏 -->
+            <nav class="bar bar-tab">
+                <a class="tab-item external" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">回到首页</span>
+                </a>
+                <a class="tab-item external" href="dhzx.html">
+                    <span class="icon icon-phone"></span>
+                    <span class="tab-label">电话咨询</span>
+                </a>
+                <a class="tab-item external" href="http://www.tdxy.com.cn/index.php?m=content&c=index&a=lists&catid=216">
+                    <span class="icon icon-search"></span>
+                    <span class="tab-label">录取查询</span>
+                </a>
+                <a class="tab-item external" href="xcsp.html">
+                    <span class="icon icon-computer"></span>
+                    <span class="tab-label">宣传视频</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/myscript.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        search();
+    });
+    $(".major_ss div").on("click", ".addss", function() {
+        search();
+    });
+
+    function search() {
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            url: "./cjwt.php",
+            data: {
+                keywords: $('#searchquestion').val()
+            },
+            success: function(data) {
+                var str = "";
+                for (i in data) {
+                    str += "<li>" +
+                        "<div class='asker'><p class='wt'>问题：" + data[i].wt + "</p></div>" +
+                        "<div class='answer'>回复内容：" + data[i].answer + "</div>" +
+                        "</li>";
+                }
+                window.document.getElementById("answer").innerHTML = str;
+                fold();
+            },
+            error: function() {
+                var str2 = "<div class='misstake'></div><div class='errorwz'>抱歉！还没有符合你条件的内容。<br>不如~你换个条件再试试~</div>";
+                window.document.getElementById("answer").innerHTML = str2;
+            }
+        });
+    }
+    </script>
+</body>
+
+</html>

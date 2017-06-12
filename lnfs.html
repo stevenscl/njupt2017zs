@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <title>南邮通达招生微网</title>
+    <link rel="stylesheet" href="css/sm.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon" type="image/ico" href="img/favicon.ico">
+</head>
+
+<body>
+    <div class="page-group">
+        <div class="page page-current">
+            <header class="bar bar-nav header">
+                <img src="img/logo.png">
+            </header>
+            <div class="content" style="top:50px;background-color: #fff;">
+                <div class="buttons-tab">
+                    <a href="#tab1" class="tab-link active button" style="font-size: .6rem">高校分数线</a>
+                    <a href="#tab2" class="tab-link button" style="font-size: .6rem">专业分数线</a>
+                </div>
+                <div class="content-block" style="margin: 0 0 16.5% 0; padding: 0;">
+                    <div class="tabs">
+                        <div id="tab1" class="tab active">
+                            <div class="score-line">
+                                <ul class="filter-con">
+                                    <li>
+                                        <div class="select">
+                                            <select id="year" onchange="showMoreFs()">
+                                                <option selected="selected" value="0000">不限</option>
+                                                <option value="2014">2014</option>
+                                                <option value="2015">2015</option>
+                                                <option value="2016">2016</option>
+                                            </select><i></i>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="select">
+                                            <select id="province" onchange="showMoreFs()">
+                                                <option selected="selected" value="江苏">江苏</option>
+                                                <option value="天津">天津</option>
+                                                <option value="河北">河北</option>
+                                                <option value="山西">山西</option>
+                                                <option value="内蒙古">内蒙古</option>
+                                                <option value="辽宁">辽宁</option>
+                                                <option value="吉林">吉林</option>
+                                                <option value="黑龙江">黑龙江</option>
+                                                <option value="上海">上海</option>
+                                                <option value="浙江">浙江</option>
+                                                <option value="安徽">安徽</option>
+                                                <option value="福建">福建</option>
+                                                <option value="江西">江西</option>
+                                                <option value="山东">山东</option>
+                                                <option value="河南">河南</option>
+                                                <option value="湖北">湖北</option>
+                                                <option value="湖南">湖南</option>
+                                                <option value="广东">广东</option>
+                                                <option value="广西">广西</option>
+                                                <option value="海南">海南</option>
+                                                <option value="重庆">重庆</option>
+                                                <option value="四川">四川</option>
+                                                <option value="贵州">贵州</option>
+                                                <option value="云南">云南</option>
+                                                <option value="陕西">陕西</option>
+                                                <option value="甘肃">甘肃</option>
+                                                <option value="青海">青海</option>
+                                                <option value="宁夏">宁夏</option>
+                                                <option value="新疆">新疆</option>
+                                            </select><i></i>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="select">
+                                            <select id="subject" onchange="showMoreFs()">
+                                                <option selected="selected" value="理工">理工</option>
+                                                <option value="文史">文史</option>
+                                                <option value="综合改革">综合改革</option>
+                                            </select><i></i>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <table border="" cellspacing="" cellpadding="" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th width="100">年份</th>
+                                            <th width="300">批次</th>
+                                            <th width="150">最低分</th>
+                                            <th width="150">省控线</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="planinfo">
+                                        <tr>
+                                            <td>2016</td>
+                                            <td>本科三批</td>
+                                            <td>304</td>
+                                            <td>265</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2015</td>
+                                            <td>本科三批</td>
+                                            <td>302</td>
+                                            <td>278</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2014</td>
+                                            <td>本科三批</td>
+                                            <td>296</td>
+                                            <td>279</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="tab2" class="tab">
+                            <div class="score-line bggray">
+                                <ul class="filter-con">
+                                    <li>
+                                        <div class="select">
+                                            <select id="year2" onchange="showMoreZy()">
+                                                <option value="2015">2015</option>
+                                                <option selected="selected" value="2016">2016</option>
+                                            </select><i></i>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="select">
+                                            <select id="province2" onchange="showMoreZy()">
+                                                <option selected="selected" value="江苏">江苏</option>
+                                                <option value="天津">天津</option>
+                                                <option value="河北">河北</option>
+                                                <option value="山西">山西</option>
+                                                <option value="内蒙古">内蒙古</option>
+                                                <option value="辽宁">辽宁</option>
+                                                <option value="吉林">吉林</option>
+                                                <option value="黑龙江">黑龙江</option>
+                                                <option value="上海">上海</option>
+                                                <option value="浙江">浙江</option>
+                                                <option value="安徽">安徽</option>
+                                                <option value="福建">福建</option>
+                                                <option value="江西">江西</option>
+                                                <option value="山东">山东</option>
+                                                <option value="河南">河南</option>
+                                                <option value="湖北">湖北</option>
+                                                <option value="湖南">湖南</option>
+                                                <option value="广东">广东</option>
+                                                <option value="广西">广西</option>
+                                                <option value="海南">海南</option>
+                                                <option value="重庆">重庆</option>
+                                                <option value="四川">四川</option>
+                                                <option value="贵州">贵州</option>
+                                                <option value="云南">云南</option>
+                                                <option value="陕西">陕西</option>
+                                                <option value="甘肃">甘肃</option>
+                                                <option value="青海">青海</option>
+                                                <option value="宁夏">宁夏</option>
+                                                <option value="新疆">新疆</option>
+                                            </select><i></i>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="select">
+                                            <select id="subject2" onchange="showMoreZy()">
+                                                <option value="理工">理工</option>
+                                                <option selected="selected" value="文史">文史</option>
+                                                <option value="综合改革">综合改革</option>
+                                            </select><i></i>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div id="info">
+                                    <div class="table-block">
+                                        <div class="block-title">
+                                            <p>专业：<span>市场营销</span></p>
+                                        </div>
+                                        <div class="item-content">
+                                            <div class="block-item border-r"><span>309</span>
+                                                <p>最低分</p>
+                                            </div>
+                                            <div class="block-item border-r"><span>312.62</span>
+                                                <p>平均分</p>
+                                            </div>
+                                            <div class="block-item border-r"><span>82</span>
+                                                <p>录取人数</p>
+                                            </div>
+                                            <div class="block-item"><span class="itemremarks">选测加分后</span>
+                                                <p>备注</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-block">
+                                        <div class="block-title">
+                                            <p>专业：<span>物流管理</span></p>
+                                        </div>
+                                        <div class="item-content">
+                                            <div class="block-item border-r"><span>311</span>
+                                                <p>最低分</p>
+                                            </div>
+                                            <div class="block-item border-r"><span>313.16</span>
+                                                <p>平均分</p>
+                                            </div>
+                                            <div class="block-item border-r"><span>65</span>
+                                                <p>录取人数</p>
+                                            </div>
+                                            <div class="block-item"><span class="itemremarks">选测加分后</span>
+                                                <p>备注</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-block">
+                                        <div class="block-title">
+                                            <p>专业：<span>电子商务</span></p>
+                                        </div>
+                                        <div class="item-content">
+                                            <div class="block-item border-r"><span>312</span>
+                                                <p>最低分</p>
+                                            </div>
+                                            <div class="block-item border-r"><span>314.9</span>
+                                                <p>平均分</p>
+                                            </div>
+                                            <div class="block-item border-r"><span>65</span>
+                                                <p>录取人数</p>
+                                            </div>
+                                            <div class="block-item"><span class="itemremarks">选测加分后</span>
+                                                <p>备注</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-block">
+                                        <div class="block-title">
+                                            <p>专业：<span>广告学</span></p>
+                                        </div>
+                                        <div class="item-content">
+                                            <div class="block-item border-r"><span>312</span>
+                                                <p>最低分</p>
+                                            </div>
+                                            <div class="block-item border-r"><span>313.84</span>
+                                                <p>平均分</p>
+                                            </div>
+                                            <div class="block-item border-r"><span>39</span>
+                                                <p>录取人数</p>
+                                            </div>
+                                            <div class="block-item"><span class="itemremarks">选测加分后</span>
+                                                <p>备注</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-block">
+                                        <div class="block-title">
+                                            <p>专业：<span>信息管理与信息系统</span></p>
+                                        </div>
+                                        <div class="item-content">
+                                            <div class="block-item border-r"><span>316</span>
+                                                <p>最低分</p>
+                                            </div>
+                                            <div class="block-item border-r"><span>320.67</span>
+                                                <p>平均分</p>
+                                            </div>
+                                            <div class="block-item border-r"><span>53</span>
+                                                <p>录取人数</p>
+                                            </div>
+                                            <div class="block-item"><span class="itemremarks">选测加分后</span>
+                                                <p>备注</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-block">
+                                        <div class="block-title">
+                                            <p>专业：<span>金融工程</span></p>
+                                        </div>
+                                        <div class="item-content">
+                                            <div class="block-item border-r"><span>315</span>
+                                                <p>最低分</p>
+                                            </div>
+                                            <div class="block-item border-r"><span>317.3</span>
+                                                <p>平均分</p>
+                                            </div>
+                                            <div class="block-item border-r"><span>46</span>
+                                                <p>录取人数</p>
+                                            </div>
+                                            <div class="block-item"><span class="itemremarks">选测加分后</span>
+                                                <p>备注</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-block">
+                                        <div class="block-title">
+                                            <p>专业：<span>财务管理</span></p>
+                                        </div>
+                                        <div class="item-content">
+                                            <div class="block-item border-r"><span>316</span>
+                                                <p>最低分</p>
+                                            </div>
+                                            <div class="block-item border-r"><span>318.78</span>
+                                                <p>平均分</p>
+                                            </div>
+                                            <div class="block-item border-r"><span>41</span>
+                                                <p>录取人数</p>
+                                            </div>
+                                            <div class="block-item"><span class="itemremarks">选测加分后</span>
+                                                <p>备注</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 工具栏 -->
+            <nav class="bar bar-tab">
+                <a class="tab-item external" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">回到首页</span>
+                </a>
+                <a class="tab-item external" href="dhzx.html">
+                    <span class="icon icon-phone"></span>
+                    <span class="tab-label">电话咨询</span>
+                </a>
+                <a class="tab-item external" href="http://www.tdxy.com.cn/index.php?m=content&c=index&a=lists&catid=216">
+                    <span class="icon icon-search"></span>
+                    <span class="tab-label">录取查询</span>
+                </a>
+                <a class="tab-item external" href="xcsp.html">
+                    <span class="icon icon-computer"></span>
+                    <span class="tab-label">宣传视频</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script type="text/javascript" src="js/sm.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/myscript.js"></script>
+</body>
+
+</html>

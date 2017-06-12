@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <title>南邮通达招生微网</title>
+
+   
+    <link rel="stylesheet" href="css/sm.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon" type="image/ico" href="img/favicon.ico">
+    
+  </head>
+  <body>
+  <div class="page-group">
+    <div class="page page-current">
+      <header class="bar bar-nav header">
+        <img src="img/logo.png">
+      </header>
+      <div class="content" style="top:50px;background-color: #fff;">
+      <div class="buttons-tab">
+        <a href="#tab1" class="tab-link active button" style="font-size: .6rem">文科招生</a>
+        <a href="#tab2" class="tab-link button" style="font-size: .6rem">理科招生</a>
+        <a href="#tab3" class="tab-link button" style="font-size: .6rem">全部专业</a>
+      </div>
+      <div class="content-block" style="margin: 0 0 16.5% 0; padding: 0;">
+        <div class="tabs">
+          <div id="tab1" class="tab active">        
+            <div class="list-block" style="margin: 0;">
+              <ul id="ws">
+                
+              </ul>
+            </div>
+          </div>
+          <div id="tab2" class="tab">
+            <div class="list-block" style="margin: 0;">
+              <ul id="lg">
+                
+              </ul>
+            </div>
+          </div>
+          <div id="tab3" class="tab">
+              <div class="major_ss ">
+                    <a class="searchbtn" onclick="searchzy()">搜索</a>
+                    <div class="searchk">
+                        <div class="contain"><input type="text" placeholder="请输入专业名称"  name="" id="major-search"/></div>
+                    </div>
+                </div>
+                <div class="good-major clearfix" style="border:0;">
+                    <h2 id="major_title"></h2>
+                </div>
+                <div class="major_list" id="major_alllist">
+                    
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 工具栏 -->
+            <nav class="bar bar-tab">
+                <a class="tab-item external" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">回到首页</span>
+                </a>
+                <a class="tab-item external" href="dhzx.html">
+                    <span class="icon icon-phone"></span>
+                    <span class="tab-label">电话咨询</span>
+                </a>
+                <a class="tab-item external" href="http://www.tdxy.com.cn/index.php?m=content&c=index&a=lists&catid=216">
+                    <span class="icon icon-search"></span>
+                    <span class="tab-label">录取查询</span>
+                </a>
+                <a class="tab-item external" href="xcsp.html">
+                    <span class="icon icon-computer"></span>
+                    <span class="tab-label">宣传视频</span>
+                </a>
+            </nav>
+    </div>
+    
+  </div>
+  <script type="text/javascript" src="js/zepto.min.js"></script>
+  <script type="text/javascript" src="js/sm.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/myscript.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function(){
+        ws();
+        lg();
+
+        searchzy();
+      });
+      function lg(){
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            url: "./zyjs.php",
+            data: {
+                keywords:'lg'
+            },
+            success: function(data) {            
+                var str = "";
+                var xgzy = new Array();
+                for (j in data) {
+                  xgzy.push(data[j]);
+               }
+                for (i in data) {
+                    str += "<a class='zymc' href='#" + data[i].simplename + "'><li class='item-content item-link'><div class='item-inner'><div class='item-title'>" + data[i].name + "</div></div></li></a>"; 
+
+                    var link = "";
+                     
+                      for(x in xgzy) {
+                        link +="<a href='#" + xgzy[x].simplename +"'>" + xgzy[x].name +"</a>";
+                      }    
+                     
+                     $(".page-group").append("<div class='page' id='" + data[i].simplename +"'><header class='bar bar-nav header'><a class='back'><img src='img/fh.png' class='fh'></a><img src='img/logo.png' class='logo'></header><div class='content' style='top:50px;background-color: #fff;'><div class='major_detail'><h1><span>" + data[i].name +"</span></h1></div><div class='major_js height-auto'>类型：<span>" + data[i].type +"</span></div><div class='major_wzp' id='detailwz'><p style='white-space: normal;'><span class='smalltitle'>培养目标：</span>" + data[i].introduce1 +"<br/></p><p style='white-space: normal;'><span class='smalltitle'>主修课程：</span>" + data[i].introduce2 +"</p><p style='white-space: normal;'><span class='smalltitle'>深造就业：</span>" + data[i].introduce3 +"</p></div><div class='major_wzp-more'></div><div class='xgzy'><h1>理科招生专业</h1><div class='classlist clearfix'>" + link +"</div></div></div></div>"); 
+                     $(".page-group").append("<div class='page' id='" + data[i].simplename +"2'><header class='bar bar-nav header'><a class='back'><img src='img/fh.png' class='fh'></a><img src='img/logo.png' class='logo'></header><div class='content' style='top:2rem;background-color: #fff;'><div class='major_detail'><h1><span>" + data[i].name +"</span></h1></div><div class='major_js height-auto'>类型：<span>" + data[i].type +"</span></div><div class='major_wzp' id='detailwz'><p style='white-space: normal;'><span class='smalltitle'>培养目标：</span>" + data[i].introduce1 +"<br/></p><p style='white-space: normal;'><span class='smalltitle'>主修课程：</span>" + data[i].introduce2 +"</p><p style='white-space: normal;'><span class='smalltitle'>深造就业：</span>" + data[i].introduce3 +"</p></div></div></div>");                 
+                }
+                window.document.getElementById("lg").innerHTML = str;  
+            },
+            error: function() {
+                var str2 = "<div class='misstake'></div><div class='errorwz'>404 NOT FOUND</div>";
+                window.document.getElementById("lg").innerHTML = str2;
+            }
+        });
+      }
+      function ws(){
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            url: "./zyjs.php",
+            data: {
+                keywords:'ws'
+            },
+            success: function(data) {            
+               var str = "";
+               var xgzy = new Array();
+               for (j in data) {
+                  xgzy.push(data[j]);
+               }
+                for (i in data) {
+                    str += "<a class='zymc' href='#" + data[i].simplename + "'><li class='item-content item-link'><div class='item-inner'><div class='item-title'>" + data[i].name + "</div></div></li></a>"; 
+
+                      // xgzy.splice(i,1);
+                      var link = "";
+                     
+                      for(x in xgzy) {
+                        link +="<a href='#" + xgzy[x].simplename +"'>" + xgzy[x].name +"</a>";
+                      }
+
+                      $(".page-group").append("<div class='page' id='" + data[i].simplename +"'><header class='bar bar-nav header'><a class='back'><img src='img/fh.png' class='fh'></a><img src='img/logo.png' class='logo'></header><div class='content' style='top:50px;background-color: #fff;'><div class='major_detail'><h1><span>" + data[i].name +"</span></h1></div><div class='major_js height-auto'>类型：<span>" + data[i].type +"</span></div><div class='major_wzp' id='detailwz'><p style='white-space: normal;'><span class='smalltitle'>培养目标：</span>" + data[i].introduce1 +"<br/></p><p style='white-space: normal;'><span class='smalltitle'>主修课程：</span>" + data[i].introduce2 +"</p><p style='white-space: normal;'><span class='smalltitle'>深造就业：</span>" + data[i].introduce3 +"</p></div><div class='major_wzp-more'></div><div class='xgzy'><h1>文科招生专业</h1><div class='classlist clearfix'>" + link +"</div></div></div></div>"); 
+                      $(".page-group").append("<div class='page' id='" + data[i].simplename +"2'><header class='bar bar-nav header'><a class='back'><img src='img/fh.png' class='fh'></a><img src='img/logo.png' class='logo'></header><div class='content' style='top:2rem;background-color: #fff;'><div class='major_detail'><h1><span>" + data[i].name +"</span></h1></div><div class='major_js height-auto'>类型：<span>" + data[i].type +"</span></div><div class='major_wzp' id='detailwz'><p style='white-space: normal;'><span class='smalltitle'>培养目标：</span>" + data[i].introduce1 +"<br/></p><p style='white-space: normal;'><span class='smalltitle'>主修课程：</span>" + data[i].introduce2 +"</p><p style='white-space: normal;'><span class='smalltitle'>深造就业：</span>" + data[i].introduce3 +"</p></div></div></div>"); 
+
+                }
+                window.document.getElementById("ws").innerHTML = str;
+            },
+            error: function() {
+                var str2 = "<div class='misstake'></div><div class='errorwz'>404 NOT FOUND</div>";
+                window.document.getElementById("ws").innerHTML = str2;
+            }
+        });     
+      }
+      function searchzy(){
+          $.ajax({
+            type: "post",
+            dataType: "json",
+            url: "./zyjs.php",
+            data: {
+                keywords:$('#major-search').val()
+            },
+            success: function(data) { 
+                var strglx=strwx=strjjx=strgx="";           
+                var glxstr=wxstr=jjxstr=gxstr="";
+                var title = "<span></span>搜索结果";
+                var glx=wx=jjx=gx=0;
+                var xg=jr=cg=0;
+                for (i in data) {
+                  if (data[i].class == '管理学') {
+                    if (data[i].name=='信息管理与信息系统') {
+                      xg++;
+                    }
+                    if (xg==2) {
+                      xg--;
+                      continue;
+                    }
+                    if (data[i].name=='财务管理') {
+                      cg++;
+                    }
+                    if (cg==2) {
+                      cg--;
+                      continue;
+                    }
+                    glx++;
+                    glxstr+="<a class='major' href='#" + data[i].simplename +"2'><h1><span>" + data[i].name +"</span></h1><p class='p1'>类型：<span>" + data[i].type +"</span></p></a>";
+                  }else if (data[i].class == '文学') {
+                    wx++;
+                    wxstr+="<a class='major' href='#" + data[i].simplename +"2'><h1><span>" + data[i].name +"</span></h1><p class='p1'>类型：<span>" + data[i].type +"</span></p></a>";
+                  }else if (data[i].class == '经济学') {
+                    if (data[i].name=='金融工程') {
+                      jr++;
+                    }
+                    if (jr==2) {
+                      jr--;
+                      continue;
+                    }
+                    jjx++;
+                    jjxstr+="<a class='major' href='#" + data[i].simplename +"2'><h1><span>" + data[i].name +"</span></h1><p class='p1'>类型：<span>" + data[i].type +"</span></p></a>";
+                  }else if (data[i].class == '工学') {
+                    gx++;
+                    gxstr+="<a class='major' href='#" + data[i].simplename +"2'><h1><span>" + data[i].name +"</span></h1><p class='p1'>类型：<span>" + data[i].type +"</span></p></a>";
+                  }
+              
+                }
+                if (glx==0) {
+                  strglx="";
+                }else{
+                  strglx="<div class='major_all'><div class='major-name'><span class='number'>" + glx +"</span><h1>管理学</h1></div><div class='major_class'>" + glxstr +"</div></div>";
+                }
+                if (wx==0) {
+                  strwx="";
+                }else{
+                  strwx="<div class='major_all'><div class='major-name'><span class='number'>" + wx +"</span><h1>文学</h1></div><div class='major_class'>" + wxstr +"</div></div>";
+                }
+                if (jjx==0) {
+                  strjjx="";
+                }else{
+                  strjjx="<div class='major_all'><div class='major-name'><span class='number'>" + jjx +"</span><h1>经济学</h1></div><div class='major_class'>" + jjxstr +"</div></div>";
+                }
+                if (gx==0) {
+                  strgx="";
+                }else{
+                  strgx="<div class='major_all'><div class='major-name'><span class='number'>" + gx +"</span><h1>工学</h1></div><div class='major_class'>" + gxstr +"</div></div>";
+                }
+
+                window.document.getElementById("major_title").innerHTML = title;
+                window.document.getElementById("major_alllist").innerHTML = strglx+strwx+strjjx+strgx;  
+            },
+            error: function() {
+                var str2 = "<div class='misstake'></div><div class='errorwz'>抱歉！还没有符合你条件的内容。<br>不如换个关键词再试试~</div>";
+                var title = "<span></span>搜索结果";
+                window.document.getElementById("major_title").innerHTML = title;
+                window.document.getElementById("major_alllist").innerHTML = str2;
+            }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <title>南邮通达招生微网</title>
+    <link rel="stylesheet" href="css/sm.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="shortcut icon" type="image/ico" href="img/favicon.ico">
+</head>
+
+<body>
+    <div class="page-group">
+        <div class="page page-current">
+            <header class="bar bar-nav header">
+                <img src="img/logo.png">
+            </header>
+            <div class="content" style="top:50px;background-color: #fff;">
+                <div class="content-block" style="margin: 0 0 16.5% 0; padding: 0;">
+                    <ul class="filter-con">
+                        <li>
+                            <div class="select">
+                                <select id="year" onchange="showMoreJh()">
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option selected="selected" value="2017">2017</option>
+                                </select><i></i>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="select">
+                                <select id="province" onchange="showMoreJh()">
+                                    <option selected="selected" value="江苏">江苏</option>
+                                    <option value="天津">天津</option>
+                                    <option value="河北">河北</option>
+                                    <option value="山西">山西</option>
+                                    <option value="内蒙古">内蒙古</option>
+                                    <option value="辽宁">辽宁</option>
+                                    <option value="吉林">吉林</option>
+                                    <option value="黑龙江">黑龙江</option>
+                                    <option value="上海">上海</option>
+                                    <option value="浙江">浙江</option>
+                                    <option value="安徽">安徽</option>
+                                    <option value="福建">福建</option>
+                                    <option value="江西">江西</option>
+                                    <option value="山东">山东</option>
+                                    <option value="河南">河南</option>
+                                    <option value="湖北">湖北</option>
+                                    <option value="湖南">湖南</option>
+                                    <option value="广东">广东</option>
+                                    <option value="广西">广西</option>
+                                    <option value="海南">海南</option>
+                                    <option value="重庆">重庆</option>
+                                    <option value="四川">四川</option>
+                                    <option value="贵州">贵州</option>
+                                    <option value="云南">云南</option>
+                                    <option value="陕西">陕西</option>
+                                    <option value="甘肃">甘肃</option>
+                                    <option value="青海">青海</option>
+                                    <option value="宁夏">宁夏</option>
+                                    <option value="新疆">新疆</option>
+                                </select><i></i>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="select">
+                                <select id="subject" onchange="showMoreJh()">
+                                    <option selected="selected" value="理工">理工</option>
+                                    <option value="文史">文史</option>
+                                    <option value="综合改革">综合改革</option>
+                                </select><i></i>
+                            </div>
+                        </li>
+                    </ul>
+                    <table border="" cellspacing="" cellpadding="" class="table">
+                        <thead>
+                            <tr>
+                                <th width="400">专业</th>
+                                <th width="100">计划数</th>
+                                <th width="140">计划性质</th>
+                                <th width="70">学费</th>
+                            </tr>
+                        </thead>
+                        <tbody id="planinfo">
+                            <tr>
+                                <td>信息管理与信息系统</td>
+                                <td>36</td>
+                                <td>非定向</td>
+                                <td>14000</td>
+                            </tr>
+                            <tr>
+                                <td>金融工程</td>
+                                <td>45</td>
+                                <td>非定向</td>
+                                <td>14000</td>
+                            </tr>
+                            <tr>
+                                <td>财务管理</td>
+                                <td>45</td>
+                                <td>非定向</td>
+                                <td>14000</td>
+                            </tr>
+                            <tr>
+                                <td>自动化</td>
+                                <td>59</td>
+                                <td>非定向</td>
+                                <td>15000</td>
+                            </tr>
+                            <tr>
+                                <td>电气工程及其自动化</td>
+                                <td>77</td>
+                                <td>非定向</td>
+                                <td>15000</td>
+                            </tr>
+                            <tr>
+                                <td>计算机科学与技术(嵌入式培养)</td>
+                                <td>67</td>
+                                <td>非定向</td>
+                                <td>17000</td>
+                            </tr>
+                            <tr>
+                                <td>计算机科学与技术</td>
+                                <td>68</td>
+                                <td>非定向</td>
+                                <td>15000</td>
+                            </tr>
+                            <tr>
+                                <td>信息工程</td>
+                                <td>61</td>
+                                <td>非定向</td>
+                                <td>15000</td>
+                            </tr>
+                            <tr>
+                                <td>通信工程(嵌入式培养)</td>
+                                <td>75</td>
+                                <td>非定向</td>
+                                <td>17000</td>
+                            </tr>
+                            <tr>
+                                <td>通信工程</td>
+                                <td>191</td>
+                                <td>非定向</td>
+                                <td>15000</td>
+                            </tr>
+                            <tr>
+                                <td>软件工程(嵌入式培养)</td>
+                                <td>44</td>
+                                <td>非定向</td>
+                                <td>17000</td>
+                            </tr>
+                            <tr>
+                                <td>软件工程</td>
+                                <td>59</td>
+                                <td>非定向</td>
+                                <td>15000</td>
+                            </tr>
+                            <tr>
+                                <td>网络工程(嵌入式培养)</td>
+                                <td>68</td>
+                                <td>非定向</td>
+                                <td>17000</td>
+                            </tr>
+                            <tr>
+                                <td>网络工程</td>
+                                <td>64</td>
+                                <td>非定向</td>
+                                <td>15000</td>
+                            </tr>
+                            <tr>
+                                <td>物联网工程(嵌入式培养)</td>
+                                <td>43</td>
+                                <td>非定向</td>
+                                <td>17000</td>
+                            </tr>
+                            <tr>
+                                <td>数字媒体技术</td>
+                                <td>62</td>
+                                <td>非定向</td>
+                                <td>15000</td>
+                            </tr>
+                            <tr>
+                                <td>光电信息科学与工程</td>
+                                <td>57</td>
+                                <td>非定向</td>
+                                <td>15000</td>
+                            </tr>
+                            <tr>
+                                <td>电子科学与技术</td>
+                                <td>39</td>
+                                <td>非定向</td>
+                                <td>15000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- 工具栏 -->
+            <nav class="bar bar-tab">
+                <a class="tab-item external" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">回到首页</span>
+                </a>
+                <a class="tab-item external" href="dhzx.html">
+                    <span class="icon icon-phone"></span>
+                    <span class="tab-label">电话咨询</span>
+                </a>
+                <a class="tab-item external" href="http://www.tdxy.com.cn/index.php?m=content&c=index&a=lists&catid=216">
+                    <span class="icon icon-search"></span>
+                    <span class="tab-label">录取查询</span>
+                </a>
+                <a class="tab-item external" href="xcsp.html">
+                    <span class="icon icon-computer"></span>
+                    <span class="tab-label">宣传视频</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/myscript.js"></script>
+</body>
+
+</html>
